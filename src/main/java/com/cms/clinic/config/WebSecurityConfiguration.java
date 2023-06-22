@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -27,7 +28,7 @@ public class WebSecurityConfiguration {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(
                             "/api/v1/auth/**",
-                            "/api/v1/user/register",
+                            "/api/v1/patient/register",
                             "/v2/api-docs",
                             "/v3/api-docs",
                             "/v3/api-docs/**",
@@ -39,9 +40,11 @@ public class WebSecurityConfiguration {
                             "/webjars/**",
                             "/swagger-ui.html"
                             ).permitAll();
+                    auth.requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll();
                     auth.requestMatchers(HttpHeaders.ALLOW).permitAll();
                     auth.anyRequest().authenticated();
                 });
+        http.headers().frameOptions().sameOrigin();
         http.exceptionHandling();
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.authenticationProvider(authenticationProvider);

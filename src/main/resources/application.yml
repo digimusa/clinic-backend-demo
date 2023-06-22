@@ -1,17 +1,38 @@
 server:
   port: 8081
 
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/clinic
-    username: root
-    password:
-  jpa:
-    properties:
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/clinic
+#    username: root
+#    password: 12345
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#        format_sql: true
+#    hibernate:
+#      ddl-auto: create-drop
+#    show-sql: true
+
+  spring:
+    datasource:
+      url=jdbc:h2:mem: clinic
+      driverClassName: org.h2.Driver
+      username: sa
+      password:
+
+    jpa:
+      show-sql: true
+      database-platform: org.hibernate.dialect.H2Dialect
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        format_sql: true
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: true
+        ddl-auto: create-drop
+
+    h2:
+      console:
+        enabled: true
+  #spring.h2.console.path=/h2-console
+    mvc:
+      pathmatch:
+        matching-strategy: ANT_PATH_MATCHER

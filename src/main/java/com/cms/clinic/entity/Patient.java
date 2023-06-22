@@ -9,11 +9,11 @@ import java.util.Set;
 @Table(name = "patients")
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient extends User {
 
     private String bloodGroup;
 
-    public String bloodType;
 }
