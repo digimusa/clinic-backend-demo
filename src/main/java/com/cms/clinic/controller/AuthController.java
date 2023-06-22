@@ -1,9 +1,8 @@
 package com.cms.clinic.controller;
 
-import com.cms.clinic.dto.RegisterRequestDto;
-import com.cms.clinic.entity.Patient;
+import com.cms.clinic.dto.AuthenticationRequestDto;
+import com.cms.clinic.dto.AuthenticationResponse;
 import com.cms.clinic.service.AuthService;
-import com.cms.clinic.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/patient")
-public class PatientController {
+@RequestMapping("/api/v1/auth")
+public class AuthController {
 
-    private final PatientService patientService;
+    private final AuthService authService;
 
-    @PostMapping("/register")
-    public ResponseEntity<Patient> register(@RequestBody RegisterRequestDto request) {
-        return new ResponseEntity<>(patientService.addNewPatient(request), HttpStatus.CREATED);
+    @PostMapping("/login")
+    public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequestDto request) {
+        return new ResponseEntity<>(authService.login(request), HttpStatus.OK);
     }
 }
