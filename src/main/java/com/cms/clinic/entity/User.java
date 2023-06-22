@@ -31,6 +31,7 @@ public abstract class User {
                     @JoinColumn(name = "ROLE_ID")
             }
     )
+
     private Set<Role> roles;
 
     private boolean isEnabled;
