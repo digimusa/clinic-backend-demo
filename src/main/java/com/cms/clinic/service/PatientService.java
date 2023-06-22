@@ -3,7 +3,7 @@ package com.cms.clinic.service;
 import com.cms.clinic.dto.RegisterRequestDto;
 import com.cms.clinic.entity.Patient;
 
-public interface AuthService {
+public interface PatientService {
 
-    Patient register(RegisterRequestDto registerRequest);
+    Patient addNewPatient(RegisterRequestDto registerRequest);
 }
