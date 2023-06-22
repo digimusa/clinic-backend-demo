@@ -31,6 +31,7 @@ public class PatientServiceImpl implements PatientService {
         patient.setEmail(registerRequest.getEmail());
         patient.setRole(Role.PATIENT);
         patient.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+        patient.setEnabled("false");
 
 
         try {
