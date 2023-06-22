@@ -1,17 +1,19 @@
 package com.cms.clinic.controller;
 
 
+import com.cms.clinic.dto.RegisterRequestDto;
 import com.cms.clinic.entity.Admin;
 import com.cms.clinic.entity.Appointment;
 import com.cms.clinic.entity.Patient;
 import com.cms.clinic.entity.Receptionist;
+import com.cms.clinic.repositories.ReceptionistRepository;
 import com.cms.clinic.service.impl.AdminService;
 import com.cms.clinic.service.impl.PatientServiceImpl;
 import com.cms.clinic.service.impl.ReceptionistService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class AdminController {
 
   private final AdminService adminService;
   private final PatientServiceImpl patientServiceImp;
+  private final ReceptionistService receptionistService
 
 
   @GetMapping("/viewAppointments")
@@ -44,5 +47,12 @@ public class AdminController {
   {
       return adminService.viewReceptionists();
   }
+
+
+  @PostMapping("/addNewReceptionist")
+  public ResponseEntity<Receptionist> register(@RequestBody RegisterRequestDto request) {
+    return new ResponseEntity<>(adminService.addNewReceptionist(request), HttpStatus.CREATED);
+  }
+
 
 }
