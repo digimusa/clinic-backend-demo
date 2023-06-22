@@ -14,6 +14,4 @@ import java.util.Set;
 public class Patient extends User {
 
     private String bloodGroup;
-
-    public String bloodType;
 }
