@@ -29,7 +29,7 @@ public class WebSecurityConfiguration {
                     auth.requestMatchers(
                             "/api/v1/auth/**",
                             "/api/v1/patient/register",
-                            "/api/v1/receptionist/viewappointments",
+                            "/api/v1/receptionist/**",
                             "/v2/api-docs",
                             "/v3/api-docs",
                             "/v3/api-docs/**",
