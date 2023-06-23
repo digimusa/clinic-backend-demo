@@ -24,5 +24,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
     private String enabled;
+    @Column(nullable = false, unique = true)
+    private String activationToken;
 
 }

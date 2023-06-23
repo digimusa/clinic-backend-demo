@@ -28,7 +28,8 @@ public class WebSecurityConfiguration {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(
                             "/api/v1/auth/**",
-                            "/api/v1/patient/register",
+                            "/api/v1/patient/**",
+                            "/api/v1/registration/**",
                             "/api/v1/receptionist/**",
                             "/api/v1/doctor/**",
                             "/api/v1/admin/**",
