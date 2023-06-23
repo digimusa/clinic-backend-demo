@@ -1,22 +1,23 @@
 package com.cms.clinic.entity;
 
-
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "admin")
+@Table(name = "doctor")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin extends User{
+public class Doctor extends User{
+    private String specialization;
 
-    private String username;
+
 
 }

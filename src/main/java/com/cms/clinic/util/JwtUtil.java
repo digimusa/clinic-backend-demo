@@ -28,16 +28,17 @@ public class JwtUtil {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(String username, String role) {
         Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails);
+        claims.put("role", role);
+        return createToken(claims, username);
     }
 
-    public String createToken(Map<String, Object> extractClaims, UserDetails userDetails) {
+    public String createToken(Map<String, Object> extractClaims, String subject) {
         return Jwts
                 .builder()
                 .setClaims(extractClaims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)

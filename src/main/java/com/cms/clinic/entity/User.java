@@ -1,5 +1,6 @@
 package com.cms.clinic.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,10 +18,11 @@ public class User {
     private String lastName;
     private String contactNo;
     private String email;
+    @JsonIgnore
     private String password;
     private String address;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private boolean enabled;
+    private String enabled;
 
 }
