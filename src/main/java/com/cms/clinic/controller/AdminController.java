@@ -24,7 +24,7 @@ public class AdminController {
 
   private final AdminService adminService;
   private final PatientServiceImpl patientServiceImp;
-  private final ReceptionistService receptionistService
+  private final ReceptionistService receptionistService;
 
 
   @GetMapping("/viewAppointments")
@@ -54,5 +54,10 @@ public class AdminController {
     return new ResponseEntity<>(adminService.addNewReceptionist(request), HttpStatus.CREATED);
   }
 
+
+//  @PostMapping("/addNewDoctor")
+//  public ResponseEntity<Doctor> register(@RequestBody RegisterRequestDto request) {
+//    return new ResponseEntity<>(adminService.addNewDoctor(request), HttpStatus.CREATED);
+//  }
 
 }

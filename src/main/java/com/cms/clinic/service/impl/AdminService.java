@@ -46,6 +46,10 @@ public class AdminService {
     }
 
 
+//    public List<Doctor> viewDoctors(){
+//        return DoctorRepository.findAll();
+//    }
+
 //    Registration
 
     public Receptionist addNewReceptionist(RegisterRequestDto registerRequest) {
