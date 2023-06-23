@@ -16,4 +16,7 @@ public class Patient extends User {
 
     private String bloodGroup;
 
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
 }
