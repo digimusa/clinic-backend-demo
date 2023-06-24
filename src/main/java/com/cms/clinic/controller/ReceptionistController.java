@@ -38,13 +38,13 @@ public class ReceptionistController {
 
     //update receptionist details
     @PutMapping("/updatereceptionist")
-    public Optional<Receptionist> updateReceptionist(@RequestBody Receptionist receptionist) {
+    public Receptionist updateReceptionist(@RequestBody Receptionist receptionist) {
         return receptionistService.updateReceptionist(receptionist);
     }
 
     //update appointment
     @PutMapping("/updateappointment")
-    public Optional<Appointment> updateAppointment(@RequestBody Appointment appointment) {
+    public Appointment updateAppointment(@RequestBody Appointment appointment) {
         return receptionistService.updateAppointment(appointment);
     }
 
@@ -53,5 +53,4 @@ public class ReceptionistController {
     public String deleteReceptionist(@PathVariable Long id) {
         return receptionistService.deleteReceptionistById(id);
     }
-
 }
