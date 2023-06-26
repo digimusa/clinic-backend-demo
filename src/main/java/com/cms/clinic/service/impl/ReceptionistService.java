@@ -1,5 +1,6 @@
 package com.cms.clinic.service.impl;
 
+import com.cms.clinic.dto.RegisterRequestDto;
 import com.cms.clinic.entity.Appointment;
 import com.cms.clinic.entity.Receptionist;
 import com.cms.clinic.entity.Role;
@@ -35,33 +36,32 @@ public class ReceptionistService {
     }
 
     //Add new receptionist
-    public Receptionist addReceptionist(Receptionist receptionist){
-        log.info("Inside Receptionist new receptionist method {} ", receptionist);
+    public Receptionist addNewReceptionist(RegisterRequestDto registerRequest) {
+        log.info("Inside Register new receptionist method {} ", registerRequest);
 
-        Receptionist reception = new Receptionist();
+        Receptionist receptionist = new Receptionist();
 
-        reception.setFirstName(receptionist.getFirstName());
-        reception.setLastName(receptionist.getLastName());
-        reception.setEmail(receptionist.getEmail());
-        reception.setRole(Role.RECEPTION);
-        reception.setPassword(passwordEncoder.encode(receptionist.getPassword()));
-        reception.setEnabled("false");
+        receptionist.setFirstName(registerRequest.getFirstName());
+        receptionist.setLastName(registerRequest.getLastName());
+        receptionist.setEmail(registerRequest.getEmail());
+        receptionist.setRole(Role.RECEPTION);
+        receptionist.setPassword(registerRequest.getPassword());
+        receptionist.setEnabled("false");
 
         String activationToken = generateActivationToken();
-        reception.setActivationToken(activationToken);
+        receptionist.setActivationToken(activationToken);
 
-        try{
-            return receptionistRepository.save(reception);
+
+        try {
+            return receptionistRepository.save(receptionist);
         } catch (Exception e){
             throw new EmailAlreadyTakenException();
         }
-
-
     }
 
     //Get Receptionist By ID
-    public Optional<Receptionist> getReceptionistById(Long id){
-        return this.receptionistRepository.findById(id);
+    public Optional<Receptionist> getReceptionistById(String email){
+        return this.receptionistRepository.findByEmail(email);
     }
 
     //Update Receptionist

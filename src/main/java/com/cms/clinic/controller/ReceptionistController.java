@@ -1,5 +1,6 @@
 package com.cms.clinic.controller;
 
+import com.cms.clinic.dto.RegisterRequestDto;
 import com.cms.clinic.entity.Appointment;
 import com.cms.clinic.entity.Receptionist;
 import com.cms.clinic.service.impl.ReceptionistService;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/receptionist")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReceptionistController {
 
     private final ReceptionistService receptionistService;
@@ -26,14 +28,14 @@ public class ReceptionistController {
 
     //Add/create new receptionist
     @PostMapping("/addreceptionist")
-    public ResponseEntity<Receptionist> addReceptionist(@RequestBody Receptionist receptionist) {
-        return new ResponseEntity<>(receptionistService.addReceptionist(receptionist), HttpStatus.CREATED);
+    public ResponseEntity<Receptionist> addReceptionist(@RequestBody RegisterRequestDto receptionist) {
+        return new ResponseEntity<>(receptionistService.addNewReceptionist(receptionist), HttpStatus.CREATED);
     }
 
     //get receptionist by id
-    @GetMapping("/getreceptionist/{id}")
-    public Optional<Receptionist> getReceptionistById(@PathVariable Long id) {
-        return this.receptionistService.getReceptionistById(id);
+    @GetMapping("/getreceptionist/{email}")
+    public Optional<Receptionist> getReceptionistById(@PathVariable String email) {
+        return this.receptionistService.getReceptionistById(email);
     }
 
     //update receptionist details

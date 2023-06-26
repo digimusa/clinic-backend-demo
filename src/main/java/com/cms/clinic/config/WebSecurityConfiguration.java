@@ -33,7 +33,6 @@ public class WebSecurityConfiguration {
                             "/api/v1/receptionist/**",
                             "/api/v1/doctor/**",
                             "/api/v1/admin/**",
-                            "/api/v1/receptionist/viewappointments",
                             "/v2/api-docs",
                             "/v3/api-docs",
                             "/v3/api-docs/**",
@@ -43,7 +42,8 @@ public class WebSecurityConfiguration {
                             "/configurations/security",
                             "/swagger-ui/**",
                             "/webjars/**",
-                            "/swagger-ui.html"
+                            "/swagger-ui.html",
+                            "/api/**"
                             ).permitAll();
                     auth.requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll();
                     auth.requestMatchers(HttpHeaders.ALLOW).permitAll();

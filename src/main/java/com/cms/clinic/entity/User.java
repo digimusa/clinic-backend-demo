@@ -18,7 +18,7 @@ public class User {
     private String lastName;
     private String contactNo;
     private String email;
-    @JsonIgnore
+    //@JsonIgnore
     private String password;
     private String address;
     @Enumerated(EnumType.STRING)
@@ -26,5 +26,4 @@ public class User {
     private String enabled;
     @Column(nullable = false, unique = true)
     private String activationToken;
-
 }
